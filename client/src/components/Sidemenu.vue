@@ -17,9 +17,8 @@ export default {
 <style>
 .nav-container {
   height: 100vh;
-  width: 10em;
-  position: absolute;
-  left: 0;
+  width: 25%;
+  float: left;
 
   /*
   display: grid;

@@ -19,11 +19,11 @@ export default {
 
 .card {
   background-color: white;
-  width: 20em;
-  height: 20em;
-  margin: 1em;
+  width: auto;
+  height: 10em;
+  margin: 0.5em;
 
-  box-shadow: 0 3px 13px rgba(0,0,0,.06);
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
   border-radius: 5px;
 }
 

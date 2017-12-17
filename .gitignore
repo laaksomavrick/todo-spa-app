@@ -18,3 +18,10 @@
 !/tmp/.keep
 
 .byebug_history
+
+# Ignore vim swap files
+*.swp
+*.swo
+
+# Ignore node modules
+node_modules/

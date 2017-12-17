@@ -45,12 +45,13 @@ export default {
 
 .container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  margin-left: 10em;
+  margin-right: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
   grid-template-rows: auto auto auto;
   grid-column-gap: 1em;
   grid-row-gap: 1em;
   justify-content: center;
-  width: 100%;
 }
 
 </style>

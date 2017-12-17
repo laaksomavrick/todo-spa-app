@@ -1,12 +1,20 @@
 <template>
   <div id="app">
+    <sidemenu/>
     <router-view/>
   </div>
 </template>
 
 <script>
+
+import Sidemenu from '@/components/Sidemenu'
+
 export default {
   name: 'app',
+
+  components: {
+    'sidemenu': Sidemenu
+  }
 }
 </script>
 

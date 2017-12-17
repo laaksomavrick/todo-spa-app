@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <div><a>todo</a></div>
     <card v-for="card in getAllCards" :card="card" :key="card.id"></card>
     </div>
   </div>
@@ -21,8 +20,6 @@ export default {
   },
 
   mounted() {
-    //this.$http.get('/api')
-    //  .then(res => console.log(res.body))
     this.fetchAllCards()
   },
 
@@ -45,7 +42,7 @@ export default {
 
 .container {
   display: grid;
-  margin-left: 10em;
+  margin-left: 11em;
   margin-right: 1em;
   grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
   grid-template-rows: auto auto auto;

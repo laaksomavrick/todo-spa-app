@@ -1,6 +1,8 @@
 <template>
   <div class="card">
-    <a>{{ card.id }}</a>
+    <a>{{ card.title }}</a>
+    <br></br>
+    <a>{{ card.description }}</a>
   </div>
 </template>
 
@@ -20,6 +22,9 @@ export default {
   width: 20em;
   height: 20em;
   margin: 1em;
+
+  box-shadow: 0 3px 13px rgba(0,0,0,.06);
+  border-radius: 5px;
 }
 
 </style>

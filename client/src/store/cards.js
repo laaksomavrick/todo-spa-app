@@ -1,17 +1,14 @@
+import { index } from '@/api/cards' 
+
 const state = {
   cards: []
 }
 
 const actions = {
   fetchAllCards({ commit }) {
-    var cards = [
-      {id: 1},
-      {id: 2},
-      {id: 3},
-      {id: 4},
-      {id: 5}
-    ]
-    commit('receive_cards', cards)
+    index()
+      .then(res => res.body.cards)
+      .then(cards => commit('receive_cards', cards))
   }
 }
 

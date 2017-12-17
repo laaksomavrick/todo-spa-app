@@ -1,6 +1,6 @@
 <template>
   <div class="nav-container">
-    <h1>hi</h1>
+    <button>todo</button>
   </div>
 </template>
 
@@ -16,10 +16,14 @@ export default {
 
 <style>
 .nav-container {
-  background: red;
   height: 100vh;
   width: 10em;
   position: absolute;
   left: 0;
+
+  /*
+  display: grid;
+  grid-template-columns: auto;
+  */
 }
 </style>

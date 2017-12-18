@@ -19,9 +19,15 @@ const mutations = {
 }
 
 const getters = {
-  getAllCards (state) {
+
+  getAllCards:(state) => {
     return state.cards
+  },
+
+  getCardsForBoard: (state) => (board_id) => {
+    return state.cards.filter(card => card.board_id === board_id)
   }
+
 }
 
 export default {

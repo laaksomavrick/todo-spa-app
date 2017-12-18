@@ -7,7 +7,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/board/:id',
       name: 'CardView',
       component: CardView
     }

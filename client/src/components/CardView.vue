@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <card v-for="card in getAllCards" :card="card" :key="card.id"></card>
+    <card v-for="card in cards" :card="card" :key="card.id"></card>
     </div>
   </div>
 </template>
@@ -19,14 +19,20 @@ export default {
     'card': Card
   },
 
-  mounted() {
+  mounted() { 
+    //todo: only fetch for selected board, this won't scale
     this.fetchAllCards()
   },
 
   computed: {
     ...mapGetters([
-      'getAllCards'
-    ])
+      'getAllCards',
+      'getCardsForBoard'
+    ]),
+    cards () {
+      let board_id = parseInt(this.$route.params.id)
+      return this.getCardsForBoard(board_id)
+    }
   },
 
   methods: {

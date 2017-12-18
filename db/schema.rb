@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171217164546) do
+ActiveRecord::Schema.define(version: 20171218014221) do
+
+  create_table "boards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "title"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "board_id", null: false
+    t.index ["board_id"], name: "index_cards_on_board_id"
   end
 
 end

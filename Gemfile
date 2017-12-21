@@ -9,6 +9,11 @@ gem 'rails', '~> 5.1.4'
 gem 'puma', '~> 3.7'
 gem 'mysql2'
 gem 'figaro'
+gem 'bcrypt', '~> 3.1.7'
+gem 'active_model_serializers'
+gem 'rack-cors'
+gem 'knock'
+gem 'jwt'
 
 # gem 'capistrano-rails', group: :development
 

@@ -1,6 +1,9 @@
 <template>
-  <div class="container">
-    <card v-for="card in cards" :card="card" :key="card.id"></card>
+  <div>
+    <sidemenu/>
+    <div class="container">
+      <card v-for="card in cards" :card="card" :key="card.id"></card>
+      </div>
     </div>
   </div>
 </template>
@@ -10,6 +13,7 @@
 
 import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/Card'
+import Sidemenu from '@/components/Sidemenu'
 
 export default {
 

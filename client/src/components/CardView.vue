@@ -20,7 +20,8 @@ export default {
   name: 'CardView',
 
   components: {
-    'card': Card
+    'card': Card,
+    'sidemenu': Sidemenu
   },
 
   mounted() { 

@@ -13,8 +13,15 @@ const router = new Router({
       name: 'Login',
       component: Login
     },
-    {
+    { //need to make this a parent view
       path: '/',
+      name: 'CardView',
+      component: CardView,
+      meta: { auth: true }
+    },
+    {
+      path: '/board/:id',
+      name: 'CardsForBoard',
       component: CardView,
       meta: { auth: true }
     },

@@ -2,7 +2,7 @@ import { current, login, create } from '@/api/user'
 
 const state = {
   user: {},
-  jwt: null,
+  jwt: '',
   authenticated: false
 }
 
@@ -44,6 +44,10 @@ const getters = {
 
   getAuthenticated: (state) => {
     return state.authenticated
+  },
+
+  getJWT: (state) => {
+    return state.jwt
   }
 
 }

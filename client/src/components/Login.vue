@@ -35,11 +35,13 @@ export default {
       const self = this
       const payload = { auth: {email: this.email, password: this.password} }
       this.fetchUserToken(payload)
-        .then(() => {
-          console.log(console.log("here1"))
+        .then(function() {
+          if (self.getAuthenticated) {
+            self.$router.push('/')
+          }
         })
-        .catch(() => {
-          console.log(console.log("here2"))
+        .catch((err) => {
+          console.log(err)
         })
     },
 

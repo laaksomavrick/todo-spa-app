@@ -10,6 +10,12 @@ sync(store, router)
 Vue.config.productionTip = false
 Vue.use(VueResource)
 
+Vue.http.interceptors.push((req, next) => {
+  req.headers.set('Authorization', `Bearer ${store.getters.getJWT}`)
+  req.headers.set('Accept', 'application/json')
+  next()
+})
+
 new Vue({
   el: '#app',
   router,

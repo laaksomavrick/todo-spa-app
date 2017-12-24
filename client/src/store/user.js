@@ -21,6 +21,13 @@ const actions = {
           reject()
         })
     })
+  },
+
+  checkUserToken({ commit }) {
+    const jwt = localStorage.getItem("JWT")
+    if (jwt) {
+      commit('receive_jwt', jwt)
+    }
   }
 
 }
@@ -29,8 +36,8 @@ const mutations = {
 
   receive_jwt (state, jwt) {
     state.jwt = jwt
-    //todo save in localstorage
     state.authenticated = true
+    localStorage.setItem("JWT", jwt)
   },
 
   error_jwt (state) {

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <sidemenu/>
     <div class="container">
       <card v-for="card in cards" :card="card" :key="card.id"></card>
       </div>
@@ -13,7 +12,6 @@
 
 import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/Card'
-import Sidemenu from '@/components/Sidemenu'
 
 export default {
 
@@ -21,11 +19,9 @@ export default {
 
   components: {
     'card': Card,
-    'sidemenu': Sidemenu
   },
 
   mounted() { 
-    //todo: only fetch for selected board, this won't scale
     this.fetchAllCards()
   },
 
@@ -36,7 +32,11 @@ export default {
     ]),
     cards () {
       let board_id = parseInt(this.$route.params.id)
-      return this.getCardsForBoard(board_id)
+      if (board_id) {
+        return this.getCardsForBoard(board_id)
+      } else {
+        return this.getAllCards
+      }
     }
   },
 

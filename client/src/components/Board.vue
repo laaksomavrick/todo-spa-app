@@ -1,6 +1,6 @@
 <template>
   <div class="board">
-    <router-link :to="{name: 'CardsForBoard', params: {id: board.id}}"> {{ board.name }} </router-link>
+    <router-link :to="{name: 'CardView', params: {id: board.id}}"> {{ board.name }} </router-link>
   </div>
 </template>
 

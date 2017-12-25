@@ -1,16 +1,18 @@
 <template>
   <div class="card">
-    <a>{{ card.title }}</a>
-    <br></br>
-    <a>{{ card.description }}</a>
+    <input v-if="editing">
+    <a v-else>{{ card.title }}</a>
   </div>
 </template>
 
 <script>
 
+//div v-if editing -> EditingCard
+//else -> DisplayCard
+
 export default {
   name: 'Card',
-  props: ['card']
+  props: ['card', 'editing']
 }
 
 </script>

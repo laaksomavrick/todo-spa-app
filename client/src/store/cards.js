@@ -1,31 +1,48 @@
 import { index } from '@/api/cards' 
 
 const state = {
-  cards: []
+  cards: [],
+  editing: false
 }
 
 const actions = {
-  fetchAllCards({ commit }) {
+
+  fetch_all_cards({ commit }) {
     index()
       .then(res => res.body.cards)
       .then(cards => commit('receive_cards', cards))
+  },
+
+  toggle_editing({ commit }) {
+    commit('toggle_editing')
   }
+
 }
 
 const mutations = {
+
   receive_cards (state, cards) {
     state.cards = cards
+  },
+
+  toggle_editing (state) {
+    state.editing = !state.editing
   }
+
 }
 
 const getters = {
 
-  getAllCards:(state) => {
+  get_all_cards: (state) => {
     return state.cards
   },
 
-  getCardsForBoard: (state) => (board_id) => {
+  get_cards_for_board: (state) => (board_id) => {
     return state.cards.filter(card => card.board_id === board_id)
+  },
+
+  get_editing: (state) => {
+    return state.editing
   }
 
 }

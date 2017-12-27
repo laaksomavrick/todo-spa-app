@@ -26,10 +26,12 @@ const mutations = {
 }
 
 const getters = {
+
   getAllBoards (state) {
     return state.boards
   },
-  getSelectedBoard (state) {
+
+  get_selected_board (state) {
     return state.selected
   }
 }

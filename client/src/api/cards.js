@@ -7,3 +7,7 @@ export const index = () => {
     return Vue.http.get('/api/cards')
 }
 
+export const create = (payload) => {
+    return Vue.http.post('/api/cards', payload)
+}
+

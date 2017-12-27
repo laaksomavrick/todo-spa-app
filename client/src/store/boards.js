@@ -13,6 +13,10 @@ const actions = {
         commit('receive_boards', boards)
         commit('set_selected_board', boards[0])
       })
+  },
+
+  select_board({ commit }, board) {
+    commit('set_selected_board', board)
   }
 }
 

@@ -43,7 +43,6 @@ export default {
     },
 
     editing () {
-      console.log(this.get_editing)
       return this.get_editing
     }
 

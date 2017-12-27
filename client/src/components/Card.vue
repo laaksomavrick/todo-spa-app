@@ -1,7 +1,18 @@
 <template>
-  <div class="card">
-    <input v-if="editing" v-model="title" @keyup.enter="submit(title)">
-    <a v-else>{{ card.title }}</a>
+  <div 
+    class="card"
+    @click="select_card"
+    v-bind:class="{ hover: isHovered }"
+    @mouseover="isHovered = true"
+    @mouseleave="isHovered = false"
+    >
+    <input 
+      v-if="editing" 
+      v-model="title" 
+      @keyup.enter="submit(title)"/>
+    <a 
+      v-else>
+      {{ card.title }}</a>
   </div>
 </template>
 
@@ -19,13 +30,10 @@ export default {
   props: ['card', 'editing'],
 
   data: function(){
-
     return {
-
      title: '',
-
+     isHovered: false
     }
-
   },
 
   computed: {
@@ -49,6 +57,10 @@ export default {
 
     },
 
+    select_card: function(card) {
+      console.log(card)
+    },
+
     ...mapActions([
         'create_card'
       ])
@@ -67,8 +79,16 @@ export default {
   height: 10em;
   margin: 0.5em;
 
-  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
   border-radius: 5px;
+  transition: box-shadow 100ms, transform 100ms;
+
+  cursor: pointer;
+}
+
+.hover {
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
+  transform: translateY(-2px);
 }
 
 </style>

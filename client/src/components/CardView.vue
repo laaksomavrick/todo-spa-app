@@ -1,8 +1,13 @@
 <template>
   <div>
     <div class="container">
-      <card v-if="editing" :editing="true"/>
-      <card v-for="card in cards" :card="card" :key="card.id"></card>
+      <card 
+        v-if="editing" 
+        :editing="true"/>
+      <card 
+        v-for="card in cards" 
+        :card="card" 
+        :key="card.id"/>
       </div>
     </div>
   </div>

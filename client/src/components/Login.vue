@@ -25,7 +25,7 @@ export default {
 
   computed: {
     ...mapGetters([
-      'getAuthenticated'
+      'get_authenticated'
       ])
   },
 
@@ -34,7 +34,7 @@ export default {
     login: function() {
       const self = this
       const payload = { auth: {email: this.email, password: this.password} }
-      this.fetchUserToken(payload)
+      this.fetch_user_token(payload)
         .then(function() {
           if (self.getAuthenticated) {
             self.$router.push('/')
@@ -46,7 +46,7 @@ export default {
     },
 
     ...mapActions([
-      'fetchUserToken'
+      'fetch_user_token'
       ])
 
   }

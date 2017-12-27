@@ -8,7 +8,7 @@ const state = {
 
 const actions = {
 
-  fetchUserToken({ commit }, payload) {
+  fetch_user_token({ commit }, payload) {
     return new Promise((resolve, reject) => {
       login(payload)
         .then(res => res.body.jwt)
@@ -23,7 +23,7 @@ const actions = {
     })
   },
 
-  checkUserToken({ commit }) {
+  check_user_token({ commit }) {
     const jwt = localStorage.getItem("JWT")
     if (jwt) {
       commit('receive_jwt', jwt)
@@ -49,11 +49,11 @@ const mutations = {
 
 const getters = {
 
-  getAuthenticated: (state) => {
+  get_authenticated: (state) => {
     return state.authenticated
   },
 
-  getJWT: (state) => {
+  get_jwt: (state) => {
     return state.jwt
   }
 

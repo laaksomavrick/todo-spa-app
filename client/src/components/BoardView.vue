@@ -1,6 +1,6 @@
 <template>
   <div class="board-container">
-    <board v-for="board in getAllBoards" :board="board" :key="board.id"/>
+    <board v-for="board in get_all_boards" :board="board" :key="board.id"/>
   </div>
 </template>
 
@@ -18,18 +18,18 @@ export default {
   },
 
   mounted() {
-    this.fetchAllBoards()
+    this.fetch_all_boards()
   },
 
   computed: {
     ...mapGetters([
-      'getAllBoards'
+      'get_all_boards'
     ])
   },
 
   methods: {
     ...mapActions([
-      'fetchAllBoards'
+      'fetch_all_boards'
     ])
   }
 

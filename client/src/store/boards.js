@@ -6,7 +6,7 @@ const state = {
 }
 
 const actions = {
-  fetchAllBoards({ commit }) {
+  fetch_all_boards({ commit }) {
     index()
       .then(res => res.body.boards)
       .then(boards => { 
@@ -27,7 +27,7 @@ const mutations = {
 
 const getters = {
 
-  getAllBoards (state) {
+  get_all_boards (state) {
     return state.boards
   },
 

@@ -10,10 +10,10 @@ sync(store, router)
 Vue.config.productionTip = false
 Vue.use(VueResource)
 
-store.dispatch('checkUserToken')
+store.dispatch('check_user_token')
 
 Vue.http.interceptors.push((req, next) => {
-  req.headers.set('Authorization', `Bearer ${store.getters.getJWT}`)
+  req.headers.set('Authorization', `Bearer ${store.getters.get_jwt}`)
   req.headers.set('Accept', 'application/json')
   next()
 })

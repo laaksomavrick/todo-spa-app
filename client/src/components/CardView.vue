@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="container-header">
+      {{ board_name }}
+    </div>
     <div class="container">
       <card 
         v-if="editing" 
@@ -35,7 +38,8 @@ export default {
     ...mapGetters([
       'get_all_cards',
       'get_cards_for_board',
-      'get_editing'
+      'get_editing',
+      'get_board_details'
     ]),
 
     cards () {
@@ -49,6 +53,15 @@ export default {
 
     editing () {
       return this.get_editing
+    },
+
+    board_name () {
+      let board_id = parseInt(this.$route.params.id)
+      if (board_id && this.get_board_details(board_id)) {
+        return this.get_board_details(board_id).name 
+      } else {
+        return 'Home'
+      }
     }
 
   },
@@ -73,6 +86,7 @@ export default {
   grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
   grid-template-rows: auto auto auto;
   justify-content: center;
+  justify-items: center;
 }
 
 </style>

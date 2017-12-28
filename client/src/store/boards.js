@@ -37,6 +37,10 @@ const getters = {
 
   get_selected_board (state) {
     return state.selected
+  },
+
+  get_board_details: (state) => (board_id) => {
+    return state.boards.find(b => b.id === board_id)
   }
 }
 

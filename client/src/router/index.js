@@ -37,5 +37,11 @@ router.beforeEach((to, from, next) => {
   authRequired && !authed ? next('/login') : next()
 })
 
+router.beforeEach((to, from, next) => {
+  const isLogin = to.name == 'Login' 
+  const authed = store.state.user.authenticated
+  isLogin && authed ? next('/') : next()
+})
+
 
 export default router

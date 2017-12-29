@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <sidemenu/>
-    <router-view/>
+    <div class="sidemenu">
+      <sidemenu/>
+    </div>
+    <div class="router">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -33,6 +37,20 @@ body {
   max-width: 1012px;
   margin-left: auto;
   margin-right: auto;
+
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 4fr;
+  grid-template-areas:
+  "sidemenu router"
+}
+
+.sidemenu {
+  grid-area: sidemenu;
+}
+
+.router {
+  grid-area: router;
 }
 
 body {

@@ -20,9 +20,6 @@
 
 import { mapActions, mapGetters } from 'vuex'
 
-//div v-if editing -> EditingCard
-//else -> DisplayCard
-
 export default {
 
   name: 'Card',
@@ -75,9 +72,7 @@ export default {
 
 .card {
   background-color: white;
-  min-width: 300px;
   width: auto;
-  max-width: 355px;
   height: 10em;
   margin: 0.5em;
 

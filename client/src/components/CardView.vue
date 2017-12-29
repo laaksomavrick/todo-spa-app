@@ -1,19 +1,16 @@
 <template>
-  <div>
-    <div class="container-header">
-      {{ board_name }}
-    </div>
     <div class="container">
-      <card 
-        v-if="editing" 
-        :editing="true"/>
-      <card 
-        v-for="card in cards" 
-        :card="card" 
-        :key="card.id"/>
+      <header class="header-container">{{ board_name }}</header>
+      <div class="card-container">
+        <card 
+          v-if="editing" 
+          :editing="true"/>
+        <card 
+          v-for="card in cards" 
+          :card="card" 
+          :key="card.id"/>
+        </div>
       </div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -81,12 +78,22 @@ export default {
 
 .container {
   display: grid;
+  grid-gap: 20px;
+  grid-template-areas:
+    "header"
+    "container";
+}
+
+.header-container {
+  grid-area: header;
+}
+.card-container {
+  grid-area: container;
+  display: grid;
   margin-left: 1em;
   margin-right: 1em;
   grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
   grid-template-rows: auto auto auto;
-  justify-content: center;
-  justify-items: center;
 }
 
 </style>

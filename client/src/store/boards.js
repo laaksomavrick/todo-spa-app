@@ -25,7 +25,11 @@ const mutations = {
     state.boards = boards
   },
   set_selected_board (state, board) {
-    state.selected = board.id
+    if (board && board.id) {
+      state.selected = board.id
+    } else {
+      state.selected = null
+    }
   }
 }
 

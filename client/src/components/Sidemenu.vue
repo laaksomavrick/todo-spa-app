@@ -1,14 +1,12 @@
 <template>
   <div class="nav-container">
     <boardview/> 
-    <createbutton/>
   </div>
 </template>
 
 <script>
 
 import BoardView from '@/components/BoardView'
-import CreateButton from '@/components/CreateButton'
 
 export default {
 
@@ -16,7 +14,6 @@ export default {
 
   components: {
     'boardview': BoardView,
-    'createbutton': CreateButton
   }
 
 }

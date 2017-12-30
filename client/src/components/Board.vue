@@ -64,6 +64,7 @@ export default {
   text-align: center;
 
   transition: box-shadow 100ms, transform 100ms; 
+  cursor: pointer;
 
 }
 

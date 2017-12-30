@@ -1,6 +1,7 @@
 <template>
     <div class="container">
       <header class="header-container">{{ board_name }}</header>
+      <createbutton class="create-button"/>
       <div class="card-container">
         <card 
           v-if="editing" 
@@ -17,6 +18,7 @@
 
 import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/Card'
+import CreateButton from '@/components/CreateButton'
 
 export default {
 
@@ -24,6 +26,7 @@ export default {
 
   components: {
     'card': Card,
+    'createbutton': CreateButton
   },
 
   mounted() { 
@@ -36,7 +39,7 @@ export default {
       'get_all_cards',
       'get_cards_for_board',
       'get_editing',
-      'get_board_details'
+      'get_board_details',
     ]),
 
     cards () {
@@ -78,22 +81,31 @@ export default {
 
 .container {
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 10px;
   grid-template-areas:
     "header"
+    "create-button"
     "container";
 }
 
 .header-container {
   grid-area: header;
+  margin-left: 8px;
+  font-size: 3em;
+  font-weight: 500;
 }
 .card-container {
   grid-area: container;
   display: grid;
-  margin-left: 1em;
   margin-right: 1em;
-  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-  grid-template-rows: auto auto auto;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+  grid-gap: 10px;
+}
+.create-button {
+  grid-area: create-button;
+  margin-left: 8px;
+  margin-right: 2em;
+  height: 2em;
 }
 
 </style>

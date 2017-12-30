@@ -6,12 +6,15 @@ const state = {
 }
 
 const actions = {
-  fetch_all_boards({ commit }) {
+  fetch_all_boards({ commit }, board_id) {
     index()
       .then(res => res.body.boards)
       .then(boards => { 
         commit('receive_boards', boards)
-        commit('set_selected_board', boards[0])
+        if (board_id) {
+          const board = boards.find(b => b.id === board_id)
+          commit('set_selected_board', board)
+        }
       })
   },
 

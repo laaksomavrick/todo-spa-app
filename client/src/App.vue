@@ -55,6 +55,8 @@ body {
 
 body {
   background: #f5f5f5;
+  font-family: Helvetica;
+  color: #161616;
 }
 
 </style>

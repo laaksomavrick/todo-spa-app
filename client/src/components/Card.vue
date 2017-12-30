@@ -6,13 +6,16 @@
     @mouseover="isHovered = true"
     @mouseleave="isHovered = false"
     >
-    <input 
-      v-if="editing" 
-      v-model="title" 
-      @keyup.enter="submit(title)"/>
-    <a 
-      v-else>
-      {{ card.title }}</a>
+    <div class="inner-card">
+      <input 
+        autofocus
+        v-if="editing" 
+        v-model="title" 
+        @keyup.enter="submit(title)"/>
+      <a 
+        v-else>
+        {{ card.title }}</a>
+    </div>
   </div>
 </template>
 
@@ -73,7 +76,7 @@ export default {
 .card {
   background-color: white;
   width: auto;
-  height: 10em;
+  height: 8em;
   margin: 0.5em;
 
   box-shadow: 0 1px 3px rgba(0,0,0,0.15);
@@ -81,11 +84,26 @@ export default {
   transition: box-shadow 100ms, transform 100ms;
 
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .hover {
   box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
   transform: translateY(-2px);
 }
+
+.inner-card {
+  margin: 8px;
+  text-align: center;
+}
+
+.inner-card a {
+}
+
+
 
 </style>

@@ -63,7 +63,9 @@ const getters = {
   },
 
   get_cards_for_board: (state) => (board_id) => {
-    return state.cards.filter(card => card.board_id === board_id)
+    return state.cards
+      .filter(card => card.board_id === board_id)
+      .sort((a, b) => { return b.id - a.id })
   },
 
   get_editing: (state) => {

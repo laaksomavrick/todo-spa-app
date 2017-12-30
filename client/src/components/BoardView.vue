@@ -19,7 +19,8 @@ export default {
   },
 
   mounted() {
-    this.fetch_all_boards()
+    const board_id = parseInt(this.$route.params.id) 
+    this.fetch_all_boards(board_id)
   },
 
   computed: {
@@ -45,5 +46,6 @@ export default {
   grid-auto-columns: 1fr;
   grid-template-rows: auto;
   justify-content: center;
+  margin: 0.5em 0 0.5em 0.5em;
 }
 </style>

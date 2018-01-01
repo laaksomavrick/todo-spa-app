@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <div class="sidemenu">
-      <sidemenu/>
-    </div>
     <div class="router">
       <router-view/>
     </div>
@@ -11,14 +8,8 @@
 
 <script>
 
-import Sidemenu from '@/components/Sidemenu'
-
 export default {
   name: 'app',
-
-  components: {
-    'sidemenu': Sidemenu
-  }
 }
 </script>
 
@@ -40,13 +31,8 @@ body {
 
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: 1fr 4fr;
   grid-template-areas:
-  "sidemenu router"
-}
-
-.sidemenu {
-  grid-area: sidemenu;
+  "router"
 }
 
 .router {

@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+      <div class="sidemenu-container">
+        <sidemenu/>
+      </div>
       <header class="header-container">{{ board_name }}</header>
       <createbutton class="create-button"/>
       <div class="card-container">
@@ -19,6 +22,7 @@
 import { mapActions, mapGetters } from 'vuex'
 import Card from '@/components/Card'
 import CreateButton from '@/components/CreateButton'
+import Sidemenu from '@/components/Sidemenu'
 
 export default {
 
@@ -26,7 +30,8 @@ export default {
 
   components: {
     'card': Card,
-    'createbutton': CreateButton
+    'createbutton': CreateButton,
+    'sidemenu': Sidemenu
   },
 
   mounted() { 
@@ -82,12 +87,15 @@ export default {
 .container {
   display: grid;
   grid-gap: 10px;
+  grid-template-columns: 1fr 4fr;
   grid-template-areas:
-    "header"
-    "create-button"
-    "container";
+    "sidemenu header"
+    "sidemenu create-button"
+    "sidemenu container";
 }
-
+.sidemenu-container {
+  grid-area: sidemenu;
+}
 .header-container {
   grid-area: header;
   margin-left: 8px;
@@ -103,8 +111,8 @@ export default {
 }
 .create-button {
   grid-area: create-button;
-  margin-left: 8px;
-  margin-right: 2em;
+  margin-left: 8px!important;
+  margin-right: 1.5em!important;
   height: 2em;
 }
 

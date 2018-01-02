@@ -9,7 +9,7 @@
 <script>
 
 export default {
-  name: 'app',
+  name: 'app'
 }
 </script>
 
@@ -25,10 +25,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
 
-  max-width: 1012px;
-  margin-left: auto;
-  margin-right: auto;
-
   display: grid;
   grid-gap: 20px;
   grid-template-areas:
@@ -42,7 +38,9 @@ body {
 body {
   background: #f5f5f5;
   font-family: Helvetica;
-  color: #282828;
+  color: #555555;
+  /*overflow: hidden;*/
+  height: 100vh;
 }
 
 </style>

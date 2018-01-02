@@ -42,7 +42,6 @@ export default {
 
 <style>
 .board-container {
-  display: grid;
   grid-auto-columns: 1fr;
   grid-template-rows: auto;
   justify-content: center;

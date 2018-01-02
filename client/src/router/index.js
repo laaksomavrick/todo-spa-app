@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import CardView from '@/components/CardView'
+import Main from '@/components/Main'
 import Login from '@/components/Login'
 import store from '@/store/index'
 
@@ -13,17 +14,22 @@ const router = new Router({
       name: 'Login',
       component: Login
     },
-    { //need to make this a parent view
+    { 
       path: '/',
       name: 'Main',
-      component: CardView,
-      meta: { auth: true }
-    },
-    {
-      path: '/board/:id',
-      name: 'CardView',
-      component: CardView,
-      meta: { auth: true }
+      component: Main,
+      meta: { auth: true },
+      children: [
+        {
+          path: '',
+          component: CardView,
+        },
+        {
+          path: 'board/:id',
+          name: 'CardView',
+          component: CardView,
+        },
+      ]
     },
     {
       path: '*', redirect: '/'

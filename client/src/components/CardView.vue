@@ -25,17 +25,12 @@ export default {
     'card': Card,
   },
 
-  mounted() { 
-    this.fetch_all_cards()
-  },
-
   computed: {
 
     ...mapGetters([
       'get_all_cards',
       'get_cards_for_board',
       'get_editing',
-      'get_board_details',
     ]),
 
     cards () {
@@ -52,14 +47,6 @@ export default {
     },
 
   },
-
-  methods: {
-
-    ...mapActions([
-      'fetch_all_cards'
-    ])
-
-  }
 
 }
 </script>

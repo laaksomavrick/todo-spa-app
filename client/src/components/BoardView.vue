@@ -18,23 +18,11 @@ export default {
     'board': Board
   },
 
-  mounted() {
-    const board_id = parseInt(this.$route.params.id) 
-    this.fetch_all_boards(board_id)
-  },
-
   computed: {
     ...mapGetters([
       'get_all_boards'
     ])
   },
-
-  methods: {
-
-    ...mapActions([
-      'fetch_all_boards',
-    ])
-  }
 
 }
 

@@ -28,7 +28,10 @@ export default {
   },
 
   mounted() { 
-    //this.fetch_all_cards()
+    //set state.ui.loading = true
+    const board_id = parseInt(this.$route.params.id)
+    this.startup(board_id)
+    //then.set.state.ui.loading = false
   },
 
   computed: {
@@ -51,7 +54,7 @@ export default {
   methods: {
 
     ...mapActions([
-      'fetch_all_cards'
+      'startup'
     ])
 
   }

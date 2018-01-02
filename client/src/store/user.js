@@ -23,6 +23,20 @@ const actions = {
     })
   },
 
+  fetch_user({ commit }, payload) {
+    return new Promise((resolve, reject) => {
+      current()
+        .then(res => res.body)
+        .then(user => {
+          commit('receive_user', user)
+          resolve()
+        })
+        .catch(err => {
+          reject()
+        })
+    })
+  },
+
   check_user_token({ commit }) {
     const jwt = localStorage.getItem("JWT")
     if (jwt) {
@@ -43,6 +57,10 @@ const mutations = {
   error_jwt (state) {
     state.jwt = null
     state.authenticated = false
+  },
+
+  receive_user (state, user) {
+    state.user = user
   }
 
 }
@@ -55,6 +73,10 @@ const getters = {
 
   get_jwt: (state) => {
     return state.jwt
+  },
+
+  get_user:(state) => {
+    return state.user
   }
 
 }

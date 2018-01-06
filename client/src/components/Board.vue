@@ -1,7 +1,7 @@
 <template>
   <div 
       class="board"
-      v-bind:class="{ clicked: isClicked }"
+      v-bind:class="{ clicked: isClicked && !create, create: create }"
       @mousedown="isClicked = true"
       @mouseup="isClicked = false"
       >
@@ -9,6 +9,10 @@
       v-if="board"
       @click.native="select_board_link(board)" 
       :to="{name: 'CardView', params: {id: board.id}}"> {{ board.name }} </router-link>
+    <a
+      v-else-if="create"
+      @click="toggle_create_board"
+      > Add new board </a>
     <router-link 
       v-else
       @click.native="select_home" 
@@ -24,7 +28,7 @@ export default {
 
   name: 'Board',
 
-  props: ['board'],
+  props: ['board', 'create'],
 
   data: function() {
 
@@ -42,6 +46,10 @@ export default {
 
     select_home: function() {
       this.select_board(null)
+    },
+
+    toggle_create_board: function() {
+      console.log("here")
     },
 
     ...mapActions(['select_board'])
@@ -64,7 +72,7 @@ export default {
   margin: 4px 0;
   text-align: center;
 
-  transition: box-shadow 100ms, transform 100ms, border-color 100ms, color 100ms; 
+  transition: box-shadow 100ms, transform 100ms, border-color 100ms, color 100ms, border 100ms; 
   cursor: pointer;
 
 }
@@ -84,6 +92,12 @@ export default {
 .clicked {
   box-shadow: none;
   transform: translateY(2px);
+}
+
+.create {
+  background: transparent;
+  border: 1px dashed #3cbdb2;
+  box-shadow: none;
 }
 
 </style>

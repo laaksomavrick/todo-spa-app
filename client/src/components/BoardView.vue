@@ -2,6 +2,7 @@
   <div class="board-container">
     <board :board="null"/>
     <board v-for="board in get_all_boards" :board="board" :key="board.id"/>
+    <board :board="null" :create="true"/>
   </div>
 </template>
 

@@ -13,6 +13,11 @@
       v-else-if="create"
       @click="toggle_create_board"
       > Add new board </a>
+    <input
+      autofocus
+      v-else-if="editing"
+      v-model="name"
+      @keyup.enter="submit(name)">
     <router-link 
       v-else
       @click.native="select_home" 
@@ -28,17 +33,30 @@ export default {
 
   name: 'Board',
 
-  props: ['board', 'create'],
+  props: ['board', 'create', 'editing'],
 
   data: function() {
 
     return {
+      name: '',
       isClicked: false
     }
 
   },
 
   methods: {
+
+    submit: function(name) {
+      const self = this
+      const payload = { board: { name: self.name } }
+      this.create_board(payload)
+        .then(_ => {
+          self.toggle_create_board()
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
 
     select_board_link: function(board) {
       this.select_board(board)
@@ -49,10 +67,14 @@ export default {
     },
 
     toggle_create_board: function() {
-      console.log("here")
+      this.toggle_board_create()
     },
 
-    ...mapActions(['select_board'])
+    ...mapActions([
+      'select_board',
+      'toggle_board_create',
+      'create_board'
+    ])
 
   }
 

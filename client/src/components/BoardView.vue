@@ -2,6 +2,7 @@
   <div class="board-container">
     <board :board="null"/>
     <board v-for="board in get_all_boards" :board="board" :key="board.id"/>
+    <board v-if="editing" :editing="true"/>
     <board :board="null" :create="true"/>
   </div>
 </template>
@@ -20,8 +21,15 @@ export default {
   },
 
   computed: {
+
+    editing() {
+      console.log(this.get_board_create_open)
+      return this.get_board_create_open
+    },
+
     ...mapGetters([
-      'get_all_boards'
+      'get_all_boards',
+      'get_board_create_open'
     ])
   },
 

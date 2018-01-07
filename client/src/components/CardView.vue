@@ -34,7 +34,7 @@ export default {
     ]),
 
     cards () {
-      let board_id = parseInt(this.$route.params.id)
+      const board_id = parseInt(this.$route.params.id)
       if (board_id) {
         return this.get_cards_for_board(board_id)
       } else {

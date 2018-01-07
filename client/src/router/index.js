@@ -22,6 +22,7 @@ const router = new Router({
       children: [
         {
           path: '',
+          name: 'Home',
           component: CardView,
         },
         {

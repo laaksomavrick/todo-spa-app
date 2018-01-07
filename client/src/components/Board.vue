@@ -21,7 +21,7 @@
     <router-link 
       v-else
       @click.native="select_home" 
-      :to="{name: 'Main'}"> Home </router-link>
+      :to="{name: 'Home'}"> Home </router-link>
   </div>
 </template>
 

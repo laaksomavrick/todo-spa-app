@@ -57,12 +57,13 @@ export default {
 
     },
 
-    select_card: function(card) {
-      console.log(card)
+    select_card: function() {
+      this.open_card_details()
     },
 
     ...mapActions([
-        'create_card'
+        'create_card',
+        'open_card_details'
       ])
 
   }

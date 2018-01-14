@@ -3,13 +3,42 @@
     <div class="router">
       <router-view/>
     </div>
+    <card-details-modal :show="show_card_details_modal" @close="close_card_details"/>
   </div>
 </template>
 
 <script>
 
+import { mapGetters, mapActions } from 'vuex'
+import CardDetailsModal from '@/components/CardDetailsModal'
+
 export default {
-  name: 'app'
+  name: 'app',
+
+  components: {
+    'card-details-modal': CardDetailsModal
+  },
+
+  methods: {
+
+    ...mapActions([
+      'close_card_details'  
+    ])
+  },
+
+  computed: {
+  
+    show_card_details_modal() {
+      return this.get_card_edit_open
+    },
+
+    ...mapGetters([
+      'get_card_edit_open'
+    ])
+
+  },
+
+
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div 
     class="card"
-    @click="select_card"
+    @click="select_card_local"
     v-bind:class="{ hover: isHovered }"
     @mouseover="isHovered = true"
     @mouseleave="isHovered = false"
@@ -57,13 +57,15 @@ export default {
 
     },
 
-    select_card: function() {
+    select_card_local: function() {
+      this.select_card(this.card)
       this.open_card_details()
     },
 
     ...mapActions([
         'create_card',
-        'open_card_details'
+        'open_card_details',
+        'select_card'
       ])
 
   }

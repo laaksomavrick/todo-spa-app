@@ -2,7 +2,8 @@ import { index, create } from '@/api/cards'
 
 const state = {
   cards: [],
-  editing: false
+  editing: false,
+  selected: null
 }
 
 const actions = {
@@ -32,6 +33,14 @@ const actions = {
           reject()
         })
     })
+  },
+
+  select_card({commit}, card) {
+    commit('select_card', card)
+  },
+
+  unselect_card({commit}) {
+    commit('unselect_card')
   }
 
 }
@@ -52,6 +61,14 @@ const mutations = {
 
   toggle_editing (state) {
     state.editing = !state.editing
+  },
+
+  select_card (state, card) {
+    state.selected = card
+  },
+
+  unselect_card (state) {
+    state.selected = null
   }
 
 }
@@ -68,8 +85,13 @@ const getters = {
       .sort((a, b) => { return b.id - a.id })
   },
 
+  //todo move to ui.js
   get_editing: (state) => {
     return state.editing
+  },
+
+  get_selected_card: (state) => {
+    return state.selected
   }
 
 }

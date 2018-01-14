@@ -2,16 +2,12 @@
 
   <modal 
     :show="show"
-    @close="close">
+    :on_submit="on_submit">
     <div class="modal-header">
-      <h3>Card Details</h3>
+      <h3> {{ card.title }}</h3>
     </div>
     <div class="modal-body">
-      <h3>hi</h3>
-    </div>
-    <div class="modal-footer">
-      <button class="">One</button>
-      <button class="">Two</button>
+      <h3>{{ card.description }}</h3>
     </div>
   </modal>
   
@@ -19,6 +15,7 @@
 
 <script>
 
+import { mapGetters, mapActions } from 'vuex'
 import Modal from '@/components/Modal'
 
 export default {
@@ -31,10 +28,47 @@ export default {
     'modal': Modal
   },
 
-  methods: {
-    close: function() {
-      this.$emit('close');
+  data: function() {
+    return {
+      card: {
+        title: '',
+        description: ''
+      }
     }
+  },
+
+  watch: {
+    selected_card: function() {
+      this.card = this.selected_card
+    }
+  },
+
+  methods: {
+    on_submit: function() {
+      return new Promise((resolve, reject) => {
+        resolve()
+      })
+    },
+    close: function() {
+      this.$emit('close')
+    },
+
+    ...mapActions([
+      'unselect_card'
+    ])
+
+  },
+
+  computed: {
+  
+    selected_card: function() {
+      return this.get_selected_card
+    },
+
+    ...mapGetters([
+      'get_selected_card',
+    ])
+
   }
 
 }
@@ -42,23 +76,4 @@ export default {
 </script>
 
 <style>
-.modal-mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  transition: opacity 3s ease;
-}
-.modal-container {
-  width: 300px;
-  margin: 40px auto 0;
-  padding: 20px 30px;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.33);
-  transition: all 3s ease;
-}
 </style>

@@ -6,6 +6,10 @@
       <div class="modal-container"
         @click.stop>
         <slot></slot>
+        <div class="modal-footer">
+          <button class="" @click="close">Close</button>
+          <button class="" @click="on_submit_prop">Two</button>
+        </div>
       </div>
     </div>
   </transition>
@@ -13,17 +17,29 @@
 
 <script>
 
+import { mapActions } from 'vuex'
 
 export default {
 
   props: [
-    'show'
+    'show',
+    'on_submit'
   ],
 
   methods: {
     close: function() {
-      this.$emit('close');
-    }
+      this.close_card_details()
+    },
+    on_submit_prop: function() {
+      this.on_submit()
+        .then(_ => {
+          console.log("submit finished")
+          this.close()
+        })
+    },
+    ...mapActions([
+      'close_card_details'
+    ])
   }
 
 }
@@ -42,7 +58,8 @@ export default {
   transition: opacity .3s ease;
 }
 .modal-container {
-  width: 300px;
+  width: 50vw;
+  height: 75vh;
   margin: 40px auto 0;
   padding: 20px 30px;
   background-color: #fff;

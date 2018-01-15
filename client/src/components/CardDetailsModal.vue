@@ -4,10 +4,10 @@
     :show="show"
     :on_submit="on_submit">
     <div class="modal-header">
-      <h3> {{ card.title }}</h3>
+      <textarea v-model="card.title"></textarea>
     </div>
     <div class="modal-body">
-      <h3>{{ card.description }}</h3>
+      <textarea v-model="card.description"></textarea>
     </div>
   </modal>
   
@@ -44,17 +44,19 @@ export default {
   },
 
   methods: {
+
     on_submit: function() {
-      return new Promise((resolve, reject) => {
-        resolve()
-      })
+      const payload = { card: { id: this.card.id, title: this.card.title, description: this.card.description } }
+      return this.update_card(payload)
     },
+
     close: function() {
       this.$emit('close')
     },
 
     ...mapActions([
-      'unselect_card'
+      'unselect_card',
+      'update_card'
     ])
 
   },

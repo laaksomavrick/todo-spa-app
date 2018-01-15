@@ -8,7 +8,7 @@
         <slot></slot>
         <div class="modal-footer">
           <button class="" @click="close">Close</button>
-          <button class="" @click="on_submit_prop">Two</button>
+          <button class="" @click="on_submit_prop">Save</button>
         </div>
       </div>
     </div>
@@ -33,7 +33,6 @@ export default {
     on_submit_prop: function() {
       this.on_submit()
         .then(_ => {
-          console.log("submit finished")
           this.close()
         })
     },

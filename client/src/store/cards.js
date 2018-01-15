@@ -1,4 +1,4 @@
-import { index, create } from '@/api/cards' 
+import { index, create, update } from '@/api/cards' 
 
 const state = {
   cards: [],
@@ -35,6 +35,20 @@ const actions = {
     })
   },
 
+  update_card({commit}, payload) {
+    return new Promise((resolve, reject) => {
+      update(payload)
+        .then(res => res.body.data)
+        .then(card => {
+          commit('update_card', card)
+          resolve()
+        })
+        .catch(err => {
+          reject()
+        })
+    })
+  },
+
   select_card({commit}, card) {
     commit('select_card', card)
   },
@@ -53,6 +67,10 @@ const mutations = {
 
   receive_card (state, card) {
     state.cards.push(card)
+  },
+
+  update_card (state, card) {
+    state.cards = state.cards.map( c => { return c.id === card.id ? card : c })
   },
 
   error_card (state) {

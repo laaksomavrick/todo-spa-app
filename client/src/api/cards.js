@@ -11,3 +11,6 @@ export const create = (payload) => {
     return Vue.http.post('/api/cards', payload)
 }
 
+export const update = (payload) => {
+    return Vue.http.patch(`/api/cards/${payload.card.id}`, payload)
+}

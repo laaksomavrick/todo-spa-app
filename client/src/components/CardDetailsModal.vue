@@ -2,11 +2,10 @@
 
   <modal 
     :show="show"
-    :on_submit="on_submit">
-    <div class="modal-header">
-      <textarea v-model="card.title"></textarea>
-    </div>
+    :on_submit="on_submit"
+    :on_delete="on_delete">
     <div class="modal-body">
+      <textarea v-model="card.title"></textarea>
       <textarea v-model="card.description"></textarea>
     </div>
   </modal>
@@ -50,13 +49,19 @@ export default {
       return this.update_card(payload)
     },
 
+    on_delete: function() {
+      const payload = { card: { id: this.card.id } }
+      return this.delete_card(payload)
+    },
+
     close: function() {
       this.$emit('close')
     },
 
     ...mapActions([
       'unselect_card',
-      'update_card'
+      'update_card',
+      'delete_card'
     ])
 
   },

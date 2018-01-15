@@ -2,11 +2,6 @@ class UsersController < ApplicationController
 
   skip_before_action :authenticate_user, only: [:create], raise: false
 
-  def index
-    #todo delete, here for testing
-    render json: {status: 200, msg: 'Logged in'}
-  end
-
   def current
     current_user.update!(last_login: Time.now)
     render json: current_user

@@ -2,6 +2,7 @@ class BoardsController < ApplicationController
 
   def index
     @boards = Board.all
+    #todo standardize data: { boards }
     render json: {boards: @boards}
   end
 
@@ -11,9 +12,6 @@ class BoardsController < ApplicationController
     if board.save
       render json: { status: 200, data: board }
     end
-  end
-
-  def show
   end
 
   def update

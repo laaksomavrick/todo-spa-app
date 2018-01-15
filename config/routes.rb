@@ -6,9 +6,9 @@ Rails.application.routes.draw do
     post 'user_token' => 'user_token#create'
     get 'users/current' => 'users#current'
 
-    resources :users
-    resources :cards
-    resources :boards
+    resources :users, only: [:current, :create, :update]
+    resources :cards, only: [:index, :create, :update, :destroy]
+    resources :boards, only: [:index, :create, :update, :destroy]
   end
 
 end

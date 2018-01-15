@@ -12,17 +12,18 @@ class CardsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def update
-    card = Card.find_by(id: params[:id])
+    card = Card.find(params[:id])
     if card.update_attributes(card_params)
       render json: { status: 200, data: card }
     end
   end
 
   def destroy
+    card = Card.find(params[:id])
+    if card.destroy
+      render json: { status: 200, data: card }
+    end
   end
 
   private

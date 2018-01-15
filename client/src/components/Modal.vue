@@ -5,6 +5,9 @@
       v-show="show">
       <div class="modal-container"
         @click.stop>
+        <div class="modal-header">
+          <button class="" @click="on_delete_prop">Delete</button>
+        </div>
         <slot></slot>
         <div class="modal-footer">
           <button class="" @click="close">Close</button>
@@ -23,22 +26,34 @@ export default {
 
   props: [
     'show',
-    'on_submit'
+    'on_submit',
+    'on_delete'
   ],
 
   methods: {
+
     close: function() {
       this.close_card_details()
     },
+
     on_submit_prop: function() {
       this.on_submit()
         .then(_ => {
           this.close()
         })
     },
+
+    on_delete_prop: function() {
+      this.on_delete()
+        .then(_ => {
+          this.close()
+        })
+    },
+
     ...mapActions([
       'close_card_details'
     ])
+
   }
 
 }

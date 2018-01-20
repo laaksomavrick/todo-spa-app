@@ -4,7 +4,7 @@
     :show="show"
     :on_submit="on_submit"
     :on_delete="on_delete">
-    <div class="modal-body">
+    <div class="card-details-container">
       <textarea v-model="card.title"></textarea>
       <textarea v-model="card.description"></textarea>
     </div>
@@ -83,4 +83,9 @@ export default {
 </script>
 
 <style>
+
+.card-details-container {
+  display: grid;
+}
+
 </style>

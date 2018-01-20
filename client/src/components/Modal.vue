@@ -8,7 +8,9 @@
         <div class="modal-header">
           <button class="" @click="on_delete_prop">Delete</button>
         </div>
-        <slot></slot>
+        <div class="modal-body">
+          <slot></slot>
+        </div>
         <div class="modal-footer">
           <button class="" @click="close">Close</button>
           <button class="" @click="on_submit_prop">Save</button>
@@ -91,5 +93,9 @@ export default {
 .modal-leave-active .modal-container {
   -webket-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+.modal-container textarea {
+  resize: none;
 }
 </style>

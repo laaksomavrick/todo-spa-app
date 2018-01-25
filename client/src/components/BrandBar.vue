@@ -92,6 +92,7 @@ export default {
   background: #fff;
   padding: 8px 16px;
   border-radius: 5px;
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
 }
 
 .dropdown-item {
@@ -100,6 +101,10 @@ export default {
   /*border-bottom: 1px solid #eaeaea;*/
   cursor: pointer;
   min-width: 100px;
+}
+
+.dropdown-item:hover {
+  color: #3cbdb2;
 }
 
 .visible {

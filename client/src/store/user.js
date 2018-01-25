@@ -14,7 +14,7 @@ const actions = {
         .then(res => res.body.jwt)
         .then(jwt => { 
           commit('receive_jwt', jwt)
-          resolve()
+          resolve(true)
         })
         .catch(err => {
           commit('error_jwt')
@@ -42,6 +42,11 @@ const actions = {
     if (jwt) {
       commit('receive_jwt', jwt)
     }
+  },
+
+  logout({ commit }) {
+    localStorage.removeItem("JWT")
+    commit('logout')
   }
 
 }
@@ -61,6 +66,12 @@ const mutations = {
 
   receive_user (state, user) {
     state.user = user
+  },
+
+  logout (state) {
+    state.user = null
+    state.jwt = null
+    state.authenticated = false
   }
 
 }

@@ -32,13 +32,14 @@ export default {
   methods: {
 
     login: function() {
-      const self = this
+      
       const payload = { auth: {email: this.email, password: this.password} }
       this.fetch_user_token(payload)
-        .then(function() {
-          if (self.getAuthenticated) {
-            self.$router.push('/')
-          }
+        .then(_  => {
+          this.startup()
+            .then(_ => {
+                this.$router.push('/')
+            })
         })
         .catch((err) => {
           console.log(err)
@@ -46,7 +47,8 @@ export default {
     },
 
     ...mapActions([
-      'fetch_user_token'
+      'fetch_user_token',
+      'startup'
       ])
 
   }

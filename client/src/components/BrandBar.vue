@@ -7,7 +7,7 @@
       <span>Signed in as {{ username }}</span>
       <div v-bind:class="{ visible: dropdown }" class="brand-menu-dropdown-container">
         <div class="brand-menu-dropdown">
-          <a class="dropdown-item">Logout</a>
+          <a class="dropdown-item" @click="click_logout">Logout</a>
         </div>
       </div>
     </div>
@@ -16,7 +16,7 @@
 
 <script>
 
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
 
@@ -28,8 +28,17 @@ export default {
     }
   },
 
-  mounted: function() {
-    console.log(this.get_user)
+  methods: {
+
+    click_logout: function() {
+      this.logout()
+      this.$router.push('login')
+    },
+
+    ...mapActions([
+      'logout' 
+    ])
+
   },
 
   computed: {

@@ -5,8 +5,8 @@
     :on_submit="on_submit"
     :on_delete="on_delete">
     <div class="card-details-container">
-      <autosize-textarea class="modal-title-textarea" v-model="card.title"/>
-      <autosize-textarea class="modal-body-textarea" v-model="card.description"/>
+      <autosize-textarea class="modal-title-textarea" v-model="card.title" placeholder="Add a title..."/>
+      <autosize-textarea class="modal-body-textarea" v-model="card.description" placeholder="Add a description..."/>
     </div>
   </modal>
   
@@ -71,7 +71,8 @@ export default {
   computed: {
   
     selected_card: function() {
-      return this.get_selected_card
+      const card = Object.assign({}, this.get_selected_card)
+      return card
     },
 
     ...mapGetters([

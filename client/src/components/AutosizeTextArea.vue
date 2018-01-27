@@ -12,6 +12,13 @@ export default {
     autosize(this.$el)
   },
 
+  watch: {
+    value: function(val) {
+      this.$el.value = val;
+      autosize.update(this.$el)
+    }
+  },
+
   methods: {
     handle_change(e) {
       if (this.on_change) {

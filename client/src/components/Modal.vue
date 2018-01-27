@@ -74,6 +74,11 @@ export default {
   transition: opacity .3s ease;
 }
 .modal-container {
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10vh auto 10vh;
+
   width: 50vw;
   height: 75vh;
   margin: 40px auto 0;
@@ -94,8 +99,13 @@ export default {
   -webket-transform: scale(1.1);
   transform: scale(1.1);
 }
-
 .modal-container textarea {
   resize: none;
+  border: 1px solid transparent;
+  outline: none;
+  color: #555;
+}
+.modal-container textarea:hover {
+  border: 1px solid rgba(0,0,0,0.5);
 }
 </style>

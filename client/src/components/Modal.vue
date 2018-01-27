@@ -6,14 +6,14 @@
       <div class="modal-container"
         @click.stop>
         <div class="modal-header">
-          <button class="" @click="on_delete_prop">Delete</button>
+          <button class="" @click="on_delete_prop">DELETE</button>
         </div>
         <div class="modal-body">
           <slot></slot>
         </div>
         <div class="modal-footer">
-          <button class="" @click="close">Close</button>
-          <button class="" @click="on_submit_prop">Save</button>
+          <button class="" @click="close">CLOSE</button>
+          <button class="" @click="on_submit_prop">SAVE</button>
         </div>
       </div>
     </div>
@@ -77,7 +77,7 @@ export default {
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 10vh auto 10vh;
+  grid-template-rows: 40px auto 40px;
 
   width: 50vw;
   height: 75vh;
@@ -87,6 +87,14 @@ export default {
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.33);
   transition: all .3s ease;
+}
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+}
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
 }
 .modal-enter {
   opacity: 0;
@@ -99,13 +107,33 @@ export default {
   -webket-transform: scale(1.1);
   transform: scale(1.1);
 }
+.modal-container button {
+ margin-left: 10px;
+ margin-right: 10px;
+ width: 20%;
+ max-width: 100px;
+ overflow: hidden;
+ border-width: 0;
+ outline: none;
+ cursor: pointer;
+ color: #3cbdb2;
+ font-size: 14px;
+ font-weight: 600;
+ border-radius: 2px;
+}
+
+.modal-container button:active {
+  background-color: rgba(0,0,0,0.05);
+}
+
 .modal-container textarea {
   resize: none;
   border: 1px solid transparent;
   outline: none;
   color: #555;
+  padding: 5px;
 }
 .modal-container textarea:hover {
-  border: 1px solid rgba(0,0,0,0.5);
+  border: 1px solid rgba(0,0,0,0.1);
 }
 </style>

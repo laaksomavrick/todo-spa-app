@@ -5,8 +5,8 @@
     :on_submit="on_submit"
     :on_delete="on_delete">
     <div class="card-details-container">
-      <textarea v-model="card.title"></textarea>
-      <textarea v-model="card.description"></textarea>
+      <autosize-textarea class="modal-title-textarea" v-model="card.title"/>
+      <autosize-textarea class="modal-body-textarea" v-model="card.description"/>
     </div>
   </modal>
   
@@ -16,6 +16,7 @@
 
 import { mapGetters, mapActions } from 'vuex'
 import Modal from '@/components/Modal'
+import AutosizeTextArea from '@/components/AutosizeTextArea'
 
 export default {
 
@@ -24,7 +25,8 @@ export default {
   ],
 
   components: {
-    'modal': Modal
+    'modal': Modal,
+    'autosize-textarea': AutosizeTextArea
   },
 
   data: function() {
@@ -86,6 +88,17 @@ export default {
 
 .card-details-container {
   display: grid;
+}
+
+.modal-title-textarea {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  height: 32px;
+}
+
+.modal-body-textarea {
+
 }
 
 </style>

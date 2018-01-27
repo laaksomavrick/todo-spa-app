@@ -104,6 +104,10 @@ export default {
 .inner-card {
   margin: 8px;
   text-align: center;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 110px;
 }
 
 .inner-card a {

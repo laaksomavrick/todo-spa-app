@@ -2,7 +2,7 @@
     <div class="container">
       <header class="brand-container"><brandbar/></header>
       <sidemenu class="sidemenu-container" />
-      <header class="header-container">{{ board_name }}</header>
+      <boardname :board_id="selected_board_id"/>
       <createbutton class="create-button"/>
       <router-view></router-view>
       </div>
@@ -16,6 +16,7 @@ import Card from '@/components/Card'
 import CreateButton from '@/components/CreateButton'
 import Sidemenu from '@/components/Sidemenu'
 import BrandBar from '@/components/Brandbar'
+import BoardName from '@/components/BoardName'
 
 export default {
 
@@ -24,7 +25,8 @@ export default {
   components: {
     'createbutton': CreateButton,
     'sidemenu': Sidemenu,
-    'brandbar': BrandBar
+    'brandbar': BrandBar,
+    'boardname': BoardName,
   },
 
   mounted() { 
@@ -36,17 +38,8 @@ export default {
 
   computed: {
 
-    ...mapGetters([
-      'get_board_details',
-    ]),
-
-    board_name () {
-      let board_id = parseInt(this.$route.params.id)
-      if (board_id && this.get_board_details(board_id)) {
-        return this.get_board_details(board_id).name 
-      } else {
-        return 'Home'
-      }
+    selected_board_id () {
+      return parseInt(this.$route.params.id)
     }
 
   },
@@ -82,12 +75,6 @@ export default {
 }
 .sidemenu-container {
   grid-area: sidemenu;
-}
-.header-container {
-  grid-area: header;
-  margin-left: 8px;
-  font-size: 3em;
-  font-weight: 500;
 }
 .create-button {
   grid-area: create-button;

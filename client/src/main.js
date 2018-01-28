@@ -4,11 +4,13 @@ import App from './App'
 import router from './router'
 import store from './store/index'
 import { sync } from 'vuex-router-sync'
+import underscore from 'vue-underscore'
 
 sync(store, router)
 
 Vue.config.productionTip = false
 Vue.use(VueResource)
+Vue.use(underscore)
 
 store.dispatch('check_user_token')
 

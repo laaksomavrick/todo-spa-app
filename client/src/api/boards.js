@@ -10,3 +10,7 @@ export const index = () => {
 export const create = (payload) => {
   return Vue.http.post('/api/boards', payload) 
 }
+
+export const update = (payload) => {
+  return Vue.http.patch(`/api/boards/${payload.board.id}`, payload)
+}

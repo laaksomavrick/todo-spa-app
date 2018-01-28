@@ -1,4 +1,4 @@
-import { index, create } from '@/api/boards'
+import { index, create, update } from '@/api/boards'
 
 const state = {
   boards: [],
@@ -35,7 +35,23 @@ const actions = {
           reject()
         })
       })
+  },
+
+  update_board({commit}, payload) {
+    //todo update model optimistically
+    return new Promise((resolve, reject) => {
+      update(payload)
+        .then(res => res.body.data)
+        .then(board => {
+          commit('update_board', board)
+          resolve()
+        })
+        .catch(err => {
+          reject()
+        })
+    })
   }
+
 }
 
 const mutations = {
@@ -54,6 +70,10 @@ const mutations = {
 
   receive_board (state, board) {
     state.boards.push(board)
+  },
+
+  update_board (state, board) {
+    state.boards = state.boards.map ( b => { return b.id === board.id ? board : b })
   }
 }
 

@@ -109,6 +109,7 @@ export default {
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
+  margin-bottom: 20px;
 }
 
 </style>

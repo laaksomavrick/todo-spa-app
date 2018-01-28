@@ -91,11 +91,11 @@ export default {
   height: 100%;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: 1fr 6fr;
   grid-template-areas:
   "modal-title-textarea"
   "modal-body-textarea"
+
 }
 
 .modal-title-textarea {
@@ -103,11 +103,9 @@ export default {
   font-weight: 500;
   line-height: 32px;
   height: 32px;
-  max-height: 70px; 
 }
 
 .modal-body-textarea {
-  max-height: 45vh;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;

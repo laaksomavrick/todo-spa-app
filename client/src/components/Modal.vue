@@ -6,14 +6,14 @@
       <div class="modal-container"
         @click.stop>
         <div class="modal-header">
-          <button class="" @click="on_delete_prop">DELETE</button>
+          <button class="modal-options-button" @click="on_delete_prop">DELETE</button>
         </div>
         <div class="modal-body">
           <slot></slot>
         </div>
         <div class="modal-footer">
-          <button class="" @click="close">CLOSE</button>
-          <button class="" @click="on_submit_prop">SAVE</button>
+          <button class="modal-close-button" @click="close">CLOSE</button>
+          <button class="modal-submit-button" @click="on_submit_prop">SAVE</button>
         </div>
       </div>
     </div>
@@ -96,6 +96,9 @@ export default {
   display: flex;
   justify-content: flex-end;
 }
+.modal-body {
+  overflow: auto;
+}
 .modal-enter {
   opacity: 0;
 }
@@ -116,12 +119,19 @@ export default {
  border-width: 0;
  outline: none;
  cursor: pointer;
- color: #3cbdb2;
  font-size: 14px;
  font-weight: 600;
  border-radius: 2px;
 }
-
+.modal-close-button {
+  color: #555;
+}
+.modal-submit-button {
+  color: #3cbdb2;
+}
+.modal-options-button {
+  color: #bd3c3c;  
+}
 .modal-container button:active {
   background-color: rgba(0,0,0,0.05);
 }

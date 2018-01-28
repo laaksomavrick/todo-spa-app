@@ -1,12 +1,13 @@
 class CardsController < ApplicationController
 
   def index
-    cards = Card.all.order(id: :desc)
+    cards = current_user.cards.all.order(id: :desc)
     render json: {cards: cards}
   end
 
   def create
     card = Card.new(card_params)
+    card.user_id = current_user.id
     if card.save
       render json: { status: 200, data: card }
     end

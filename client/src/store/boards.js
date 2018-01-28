@@ -1,8 +1,7 @@
 import { index, create, update } from '@/api/boards'
 
 const state = {
-  boards: [],
-  selected: null
+  boards: []
 }
 
 const actions = {
@@ -12,8 +11,12 @@ const actions = {
       .then(boards => { 
         commit('receive_boards', boards)
         if (board_id) {
+          //todo: FIX THIS??
           const board = boards.find(b => b.id === board_id)
           commit('set_selected_board', board)
+        } else {
+          const default_board = boards[0]
+          commit('set_selected_board', default_board)
         }
       })
   },

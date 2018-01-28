@@ -33,6 +33,10 @@ export default {
     //set state.ui.loading = true
     const board_id = parseInt(this.$route.params.id)
     this.startup(board_id)
+      .then( () => {
+        const selected = this.get_selected_board
+        this.$router.push({ path: `/board/${selected}` }) 
+      })
     //then.set.state.ui.loading = false
   },
 
@@ -40,7 +44,11 @@ export default {
 
     selected_board_id () {
       return parseInt(this.$route.params.id)
-    }
+    },
+
+    ...mapGetters([
+        'get_selected_board'
+      ])
 
   },
 

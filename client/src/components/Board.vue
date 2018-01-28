@@ -18,10 +18,6 @@
       v-else-if="editing"
       v-model="name"
       @keyup.enter="submit(name)">
-    <router-link 
-      v-else
-      @click.native="select_home" 
-      :to="{name: 'Home'}"> Home </router-link>
   </div>
 </template>
 

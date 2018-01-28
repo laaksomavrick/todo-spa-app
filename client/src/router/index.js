@@ -21,11 +21,6 @@ const router = new Router({
       meta: { auth: true },
       children: [
         {
-          path: '',
-          name: 'Home',
-          component: CardView,
-        },
-        {
           path: 'board/:id',
           name: 'CardView',
           component: CardView,

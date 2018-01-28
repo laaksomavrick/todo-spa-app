@@ -1,8 +1,7 @@
 class BoardsController < ApplicationController
 
   def index
-    @boards = Board.all
-    #todo standardize data: { boards }
+    @boards = current_user.boards.all.order(:id)
     render json: {boards: @boards}
   end
 

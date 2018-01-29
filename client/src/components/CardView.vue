@@ -3,7 +3,8 @@
   <div class="card-container">
     <card 
       v-if="editing" 
-      :editing="true"/>
+      :editing="editing"
+      ref="editing"/>
     <card 
       v-for="card in cards" 
       :card="card" 

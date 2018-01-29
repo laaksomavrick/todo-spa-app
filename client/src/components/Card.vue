@@ -9,11 +9,13 @@
     <div class="inner-card">
       <input 
         autofocus
+        ref="editing"
         v-if="editing" 
+        key="card-editing"
         v-model="title" 
         @keyup.enter="submit(title)"/>
       <a 
-        v-else>
+        v-else key="card-display">
         {{ card.title }}</a>
     </div>
   </div>
@@ -33,6 +35,12 @@ export default {
     return {
      title: '',
      isHovered: false
+    }
+  },
+
+  mounted: function() {
+    if (this.$refs.editing) {
+      this.$refs.editing.focus()
     }
   },
 
@@ -58,8 +66,10 @@ export default {
     },
 
     select_card_local: function() {
-      this.select_card(this.card)
-      this.open_card_details()
+      if(!this.editing) {
+        this.select_card(this.card)
+        this.open_card_details()
+      }
     },
 
     ...mapActions([
@@ -92,7 +102,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .hover {
@@ -110,7 +119,14 @@ export default {
   max-height: 110px;
 }
 
-.inner-card a {
+.inner-card input {
+  border: 1px solid transparent;
+  outline: none;
+  color: rgb(85,85,85);
+  font-size: 16px;
+  
+  text-align: center;
+  margin: 8px;
 }
 
 

@@ -66,10 +66,15 @@ body {
 
 body {
   background: #f5f5f5;
-  font-family: Helvetica;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   color: #555555;
   /*overflow: hidden;*/
   height: 100vh;
+}
+
+input {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  color: #555555;
 }
 
 </style>

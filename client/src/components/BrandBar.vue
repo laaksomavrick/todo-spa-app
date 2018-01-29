@@ -92,7 +92,7 @@ export default {
   background: #fff;
   padding: 8px 16px;
   border-radius: 5px;
-  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
 }
 
 .dropdown-item {

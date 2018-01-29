@@ -16,6 +16,8 @@
     <input
       autofocus
       v-else-if="editing"
+      key="board-editing"
+      ref="editing"
       v-model="name"
       @keyup.enter="submit(name)">
   </div>
@@ -32,12 +34,16 @@ export default {
   props: ['board', 'create', 'editing'],
 
   data: function() {
-
     return {
       name: '',
       isClicked: false
     }
+  },
 
+  mounted: function() {
+    if (this.$refs.editing) {
+      this.$refs.editing.focus()
+    }
   },
 
   methods: {
@@ -105,6 +111,8 @@ export default {
   text-decoration: none;
   display: block;
   margin-top: 4px;
+  width: 100%;
+  height: 100%;
 }
 
 .clicked {
@@ -113,9 +121,19 @@ export default {
 }
 
 .create {
+  margin-top: 6px;
   background: transparent;
   border: 1px dashed #3cbdb2;
   box-shadow: none;
+}
+
+.board input {
+  border: 1px solid transparent;
+  outline: none;
+  color: rgb(85, 85, 85);
+  font-size: 16px;
+  text-align: center;
+  margin-top: 2px;
 }
 
 </style>

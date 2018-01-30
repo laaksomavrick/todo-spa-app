@@ -19,6 +19,7 @@
       key="board-editing"
       ref="editing"
       v-model="name"
+      @keydown.esc="close"
       @keyup.enter="submit(name)">
   </div>
 </template>
@@ -58,6 +59,12 @@ export default {
         .catch(err => {
           console.log(err)
         })
+    },
+
+    close: function() {
+      if (this.editing) {
+        this.toggle_board_create()
+      }
     },
 
     select_board_link: function(board) {

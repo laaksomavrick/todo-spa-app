@@ -1,7 +1,7 @@
 <template>
   <div class="board-container">
     <board v-for="board in get_all_boards" :board="board" :key="board.id"/>
-    <board v-if="editing" :editing="true"/>
+    <board v-if="editing" :editing="editing"/>
     <board :board="null" :create="true"/>
   </div>
 </template>

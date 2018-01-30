@@ -13,6 +13,7 @@
         v-if="editing" 
         key="card-editing"
         v-model="title" 
+        @keydown.esc="close"
         @keyup.enter="submit(title)"/>
       <a 
         v-else key="card-display">
@@ -65,6 +66,12 @@ export default {
 
     },
 
+    close: function() {
+      if (this.editing) {
+        this.toggle_editing()
+      }
+    },
+
     select_card_local: function() {
       if(!this.editing) {
         this.select_card(this.card)
@@ -75,7 +82,8 @@ export default {
     ...mapActions([
         'create_card',
         'open_card_details',
-        'select_card'
+        'select_card',
+        'toggle_editing'
       ])
 
   }

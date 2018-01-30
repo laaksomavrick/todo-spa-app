@@ -69,7 +69,7 @@ export default {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: 1fr 4fr;
-  grid-template-rows: 50px 66px auto;
+  grid-template-rows: 50px 66px 32px auto;
   grid-template-areas:
     "brand brand"
     "sidemenu header"

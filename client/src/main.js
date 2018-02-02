@@ -5,6 +5,7 @@ import router from './router'
 import store from './store/index'
 import { sync } from 'vuex-router-sync'
 import underscore from 'vue-underscore'
+import "vue-material-design-icons/styles.css" 
 
 sync(store, router)
 

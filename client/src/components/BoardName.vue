@@ -1,6 +1,7 @@
 <template>
   <div class="header-container">
     <textarea @input="did_change" placeholder="Add the name of this board...">{{ board_name }}</textarea>
+    <delete-icon class="material-destroy" @click.native="destroy"/>
   </div>
 </template>
 
@@ -8,12 +9,17 @@
 
 import { mapActions, mapGetters } from 'vuex'
 import { _ } from 'vue-underscore'
+import DeleteIcon from 'icons/delete'
 
 export default {
 
   name: 'BoardName',
 
   props: ['board_id'],
+
+  components: {
+    'delete-icon': DeleteIcon
+  },
 
   computed: {
 
@@ -43,6 +49,10 @@ export default {
         }, 500 
     ),
 
+    destroy: function() {
+     console.log("here") 
+    },
+
     ...mapActions([
       'update_board'
     ])
@@ -57,23 +67,44 @@ export default {
 .header-container {
   grid-area: header;
   margin-left: 8px;
-  margin-bottom: 8px;
-  margin-right: 2em;
+  border: 1px solid transparent;
+  display: flex;
+  margin-right: 1.5em;
 }
 .header-container textarea {
   resize: none;
   border: 1px solid transparent;
   outline: none;
   color: #555;
-  padding: 5px;
   background: transparent;
   height: 100%;
-  width: 100%;
+  width: auto;
+  align-self: flex-start;
+  flex: 1;
 
   font-size: 3em;
   font-weight: 500;
 }
-.header-container textarea:hover {
+.header-container .material-design-icon {
+  visibility: hidden;
+  margin-left: auto;
+  margin-right: 8px;
+}
+
+.header-container:hover {
   border: 1px solid rgba(0,0,0,0.1);
+}
+.header-container:hover .material-design-icon {
+  visibility: visible;
+  opacity: 0.25;
+  cursor: pointer;
+}
+.material-design-icon {
+  height: 36px;
+  width: 36px;
+}
+.material-design-icon__svg {
+  height: 36px;
+  width: 36px;
 }
 </style>

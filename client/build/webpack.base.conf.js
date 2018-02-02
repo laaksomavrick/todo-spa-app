@@ -27,6 +27,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'icons': resolve('node_modules/vue-material-design-icons')
     }
   },
   module: {
@@ -64,6 +65,10 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.css$/,
+        use: 'style-loader'
       }
     ]
   },

@@ -21,6 +21,10 @@ class BoardsController < ApplicationController
   end
 
   def destroy
+    board = Board.find(params[:id])
+    if board.destroy
+      render json: { status: 200, data: board }
+    end
   end
 
   private

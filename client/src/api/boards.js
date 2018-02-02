@@ -14,3 +14,7 @@ export const create = (payload) => {
 export const update = (payload) => {
   return Vue.http.patch(`/api/boards/${payload.board.id}`, payload)
 }
+
+export const destroy = (payload) => {
+  return Vue.http.delete(`/api/boards/${payload.board.id}`, payload)
+}

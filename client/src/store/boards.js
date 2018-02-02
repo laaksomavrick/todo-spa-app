@@ -1,4 +1,4 @@
-import { index, create, update } from '@/api/boards'
+import { index, create, update, destroy } from '@/api/boards'
 
 const state = {
   boards: []
@@ -40,6 +40,20 @@ const actions = {
       })
   },
 
+  delete_board({commit}, payload) {
+    return new Promise((resolve, reject) => {
+      destroy(payload)
+        .then(res => res.body.data)
+        .then(board => {
+          commit('delete_board', board)
+          resolve()
+        })
+        .catch(err => {
+          reject()
+        })
+    })
+  },
+
   update_board({commit}, payload) {
     //todo update model optimistically
     return new Promise((resolve, reject) => {
@@ -77,6 +91,10 @@ const mutations = {
 
   update_board (state, board) {
     state.boards = state.boards.map ( b => { return b.id === board.id ? board : b })
+  },
+
+  delete_board (state, board) {
+    state.boards = state.boards.filter( b => { return b.id !== board.id } )
   }
 }
 

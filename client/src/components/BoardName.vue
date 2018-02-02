@@ -50,11 +50,18 @@ export default {
     ),
 
     destroy: function() {
-     console.log("here") 
+      //todo go to default board on delete
+      //todo prevent deletion of default board, db flag for default on created
+      const payload = { board: { id: this.board_id } }
+      this.delete_board(payload)
+        .catch(err => {
+          console.log(err)
+        })
     },
 
     ...mapActions([
-      'update_board'
+      'update_board',
+      'delete_board'
     ])
 
   }

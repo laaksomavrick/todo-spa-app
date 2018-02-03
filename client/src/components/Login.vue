@@ -132,4 +132,12 @@ export default {
 .login-form ::placeholder {
   color: rgba(255,255,255,0.5);
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+}
 </style>

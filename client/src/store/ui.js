@@ -2,7 +2,7 @@ const state = {
   board_edit_open: false,
   card_edit_open: false,
   board_create_open: false,
-  loading: true,
+  loading: false,
 }
 
 const actions = {

@@ -5,6 +5,8 @@
       <boardname :board_id="selected_board_id"/>
       <createbutton class="create-button"/>
       <router-view></router-view>
+      <card-details-modal :show="show_card_details_modal" @close="close_card_details"/>
+      <loading :show="show_loading"/>  
       </div>
 </template>
 
@@ -17,6 +19,8 @@ import CreateButton from '@/components/CreateButton'
 import Sidemenu from '@/components/Sidemenu'
 import BrandBar from '@/components/Brandbar'
 import BoardName from '@/components/BoardName'
+import CardDetailsModal from '@/components/CardDetailsModal'
+import Loading from '@/components/Loading'
 
 export default {
 
@@ -27,10 +31,15 @@ export default {
     'sidemenu': Sidemenu,
     'brandbar': BrandBar,
     'boardname': BoardName,
+    'card-details-modal': CardDetailsModal,
+    'loading': Loading
+  },
+
+  created() {
+    this.set_loading(true)
   },
 
   mounted() { 
-    this.set_loading(true)
     const board_id = parseInt(this.$route.params.id)
     this.startup(board_id)
       .then( () => {
@@ -46,8 +55,18 @@ export default {
       return parseInt(this.$route.params.id)
     },
 
+    show_card_details_modal() {
+      return this.get_card_edit_open
+    },
+
+    show_loading() {
+      return this.get_loading
+    },
+
     ...mapGetters([
-        'get_selected_board'
+      'get_selected_board',
+      'get_card_edit_open',
+      'get_loading'
       ])
 
   },
@@ -56,7 +75,8 @@ export default {
 
     ...mapActions([
       'startup',
-      'set_loading'
+      'set_loading',
+      'close_card_details'
     ])
 
   }

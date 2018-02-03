@@ -1,7 +1,7 @@
 <template>
   <div class="header-container">
     <textarea @input="did_change" placeholder="Add the name of this board...">{{ board_name }}</textarea>
-    <delete-icon class="material-destroy" @click.native="destroy"/>
+    <delete-icon v-if="board_is_not_default" class="material-destroy" @click.native="destroy"/>
   </div>
 </template>
 
@@ -29,8 +29,18 @@ export default {
       }
     },
 
+    board_is_not_default: function() {
+      const default_board = this.get_default_board
+      if (default_board) {
+        return default_board.id !== this.board_id
+      } else {
+        return false
+      }
+    },
+
     ...mapGetters([
-      'get_board_details'
+      'get_board_details',
+      'get_default_board'
       ])
 
   },
@@ -50,10 +60,12 @@ export default {
     ),
 
     destroy: function() {
-      //todo go to default board on delete
-      //todo prevent deletion of default board, db flag for default on created
       const payload = { board: { id: this.board_id } }
       this.delete_board(payload)
+        .then(_ => {
+          const default_board = this.get_default_board
+          this.$router.push({ path: `/board/${default_board.id}` })
+        })
         .catch(err => {
           console.log(err)
         })

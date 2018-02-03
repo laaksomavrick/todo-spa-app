@@ -24,7 +24,7 @@ class User < ApplicationRecord
   end
 
   def create_default_board
-    Board.new({name: 'Home', user_id: self.id}).save
+    Board.new({name: 'Home', user_id: self.id, is_default: true}).save
   end
 
 end

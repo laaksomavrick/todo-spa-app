@@ -30,7 +30,7 @@ export default {
   },
 
   mounted() { 
-    //set state.ui.loading = true
+    //todo set state.ui.loading = true
     const board_id = parseInt(this.$route.params.id)
     this.startup(board_id)
       .then( () => {

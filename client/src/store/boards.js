@@ -1,27 +1,25 @@
 import { index, create, update, destroy } from '@/api/boards'
 
 const state = {
-  boards: []
+  boards: [],
+  selected: null
 }
 
 const actions = {
   fetch_all_boards({ commit }, board_id) {
     index()
-      .then(res => res.body.boards)
+      .then(res => res.body.data)
       .then(boards => { 
         commit('receive_boards', boards)
-        if (board_id) {
-          //todo: FIX THIS??
-          const board = boards.find(b => b.id === board_id)
-          commit('set_selected_board', board)
-        } else {
-          const default_board = boards[0]
+        if (state.selected === null) {
+          const default_board = boards.find((b) => { return b.is_default === true })
           commit('set_selected_board', default_board)
         }
       })
   },
 
   select_board({ commit }, board) {
+    console.log("selecting board")
     commit('set_selected_board', board)
   },
 
@@ -110,6 +108,10 @@ const getters = {
 
   get_board_details: (state) => (board_id) => {
     return state.boards.find(b => b.id === board_id)
+  },
+
+  get_default_board (state) {
+    return state.boards.find((b) => { return b.is_default === true })
   }
 }
 

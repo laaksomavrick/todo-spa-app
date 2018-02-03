@@ -10,7 +10,7 @@ const actions = {
 
   fetch_all_cards({ commit }) {
     index()
-      .then(res => res.body.cards)
+      .then(res => res.body.data)
       .then(cards => commit('receive_cards', cards))
   },
 

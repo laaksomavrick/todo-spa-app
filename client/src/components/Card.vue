@@ -56,6 +56,9 @@ export default {
   methods: {
     
     submit: function(title) {
+
+      console.log(this.get_selected_board)
+
       const self = this
       const payload = { card: { title: self.title, board_id: self.get_selected_board } }
 

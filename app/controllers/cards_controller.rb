@@ -2,7 +2,7 @@ class CardsController < ApplicationController
 
   def index
     cards = current_user.cards.all.order(id: :desc)
-    render json: {cards: cards}
+    render json: { status: 200, data: cards }
   end
 
   def create

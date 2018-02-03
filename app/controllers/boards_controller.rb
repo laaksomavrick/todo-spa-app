@@ -1,8 +1,8 @@
 class BoardsController < ApplicationController
 
   def index
-    @boards = current_user.boards.all.order(:id)
-    render json: {boards: @boards}
+    boards = current_user.boards.all.order(:id)
+    render json: { status: 200, data: boards}
   end
 
   def create

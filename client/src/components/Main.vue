@@ -42,7 +42,6 @@ export default {
   mounted() { 
     const board_id = parseInt(this.$route.params.id)
     this.startup(board_id)
-      .then(() => new Promise(resolve => setTimeout(resolve, 1500)))
       .then( () => {
         const selected = this.get_selected_board
         this.$router.push({ path: `/board/${selected}` }) 

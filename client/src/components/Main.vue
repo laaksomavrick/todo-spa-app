@@ -30,14 +30,14 @@ export default {
   },
 
   mounted() { 
-    //todo set state.ui.loading = true
+    this.set_loading(true)
     const board_id = parseInt(this.$route.params.id)
     this.startup(board_id)
       .then( () => {
         const selected = this.get_selected_board
         this.$router.push({ path: `/board/${selected}` }) 
+        this.set_loading(false)
       })
-    //then.set.state.ui.loading = false
   },
 
   computed: {
@@ -55,7 +55,8 @@ export default {
   methods: {
 
     ...mapActions([
-      'startup'
+      'startup',
+      'set_loading'
     ])
 
   }

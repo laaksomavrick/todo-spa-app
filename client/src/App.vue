@@ -4,6 +4,7 @@
       <router-view/>
     </div>
     <card-details-modal :show="show_card_details_modal" @close="close_card_details"/>
+    <loading :show="show_loading"/>
   </div>
 </template>
 
@@ -11,12 +12,14 @@
 
 import { mapGetters, mapActions } from 'vuex'
 import CardDetailsModal from '@/components/CardDetailsModal'
+import Loading from '@/components/Loading'
 
 export default {
   name: 'app',
 
   components: {
-    'card-details-modal': CardDetailsModal
+    'card-details-modal': CardDetailsModal,
+    'loading': Loading
   },
 
   methods: {
@@ -32,8 +35,13 @@ export default {
       return this.get_card_edit_open
     },
 
+    show_loading() {
+      return this.get_loading
+    },
+
     ...mapGetters([
-      'get_card_edit_open'
+      'get_card_edit_open',
+      'get_loading'
     ])
 
   },

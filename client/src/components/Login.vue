@@ -1,10 +1,21 @@
 <template>
   <div class="login-container">
     <div class="login-form">
-      <input v-model="email" placeholder="email">
-      <input v-model="password" placeholder="password">
-      <button v-on:click="login">Login</button>
+      <span class="login-form-item"> Resolution </span>
+      <input class="login-form-item" type="text" autocomplete="off" v-model="email" placeholder="email">
+      <input class="login-form-item" type="password" autocomplete="off" v-model="password" placeholder="password">
+      <button class="login-form-item" v-on:click="login">Login</button>
     </div>
+    <vue-particles 
+      class="login-particles" 
+      color="#dedede"
+      :particlesNumber="60"
+      :lineLinked="false"
+      :hoverEffect="false"
+      :moveSpeed="2"
+      :clickEffect="false"
+      >
+    </vue-particles>
   </div>
 </template>
 
@@ -59,11 +70,66 @@ export default {
 <style>
 .login-container {
   height: 100vh;
-  display: grid;
-  grid-template-columns: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #0eb8b6, #098ebf);
+  overflow: hidden;
 }
 .login-form {
-  justify-self: center;
-  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 20vw;
+  height: 75vh;
+  position: absolute;
+  z-index: 9999;
+}
+.login-particles {
+  opacity: 0.8;
+  height: 100%;
+  width: 100%;
+}
+.login-form-item {
+  margin: 10px;
+  padding: 5px;
+  width: 100%;
+  height: 30px;
+  font-size: 16px;
+}
+.login-form input {
+  resize: none;
+  border: 1px solid transparent;
+  outline: none;
+  color: white!important;
+  background-color: transparent!important;
+  background: transparent!important;
+}
+.login-form span {
+  color: white;
+  font-weight: 500;
+  font-size:22px;
+  text-align: center;
+
+}
+.login-form button {
+  padding: 2px;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 2px;
+  color: white;
+  background: rgba(255,255,255,0.1);
+  height: 40px;
+}
+.login-form button:active {
+  background: rgba(255,255,255,0.2);
+}
+.login-form ::placeholder {
+  color: rgba(255,255,255,0.5);
 }
 </style>

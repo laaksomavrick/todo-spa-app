@@ -1,4 +1,4 @@
-# Resolution (Kanban Board)
+# Resolution (todo app)
 
 A modern to-do SPA, built using Vue, Rails and MySQL. Inspired via the desire to move my goal tracking out of a google doc.
 

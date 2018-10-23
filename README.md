@@ -1,6 +1,6 @@
 # Resolution (todo app)
 
-A modern to-do SPA, built using Vue, Rails and MySQL. Inspired via the desire to move my goal tracking out of a google doc.
+A modern to-do SPA, built using Vue, Rails and MySQL. The intention was to explore Vue.
 
 Login:
 ![alt text](https://raw.githubusercontent.com/laaksomavrick/home-page/master/gifs/home-page-login.gif)
